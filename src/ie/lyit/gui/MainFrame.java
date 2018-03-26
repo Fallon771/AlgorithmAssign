@@ -13,8 +13,7 @@ public class MainFrame extends javax.swing.JFrame {
         // Initializes all of the GUI components
         initComponents();  
     }
-    
-    // Builds the entire GUI (can be ignored)
+    // Builds the entire GUI (IDE generated code ..can be ignored)
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,6 +113,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -957,6 +957,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bannerPanel;
     private javax.swing.JTextField bubCompareT;
@@ -1005,7 +1006,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField insertTimeT1;
     private javax.swing.JTextField insertTimeT2;
     private javax.swing.JPanel invertedPanel;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1015,11 +1015,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JSeparator logoLine;
     private javax.swing.JPanel randBubbleP;
