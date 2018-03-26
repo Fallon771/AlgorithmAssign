@@ -540,8 +540,8 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="1000"/>
-                <StringItem index="1" value="10,000"/>
-                <StringItem index="2" value="100,000"/>
+                <StringItem index="1" value="10000"/>
+                <StringItem index="2" value="100000"/>
               </StringArray>
             </Property>
           </Properties>
@@ -560,6 +560,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Bubble"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bubbleButtActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="enhancedButt">
           <Properties>

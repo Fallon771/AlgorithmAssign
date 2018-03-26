@@ -1,4 +1,7 @@
 package ie.lyit.gui;
+import ie.lyit.algorithms.*;
+import ie.lyit.arrays.*;
+import java.util.*;
 
 /**
  * Author: 
@@ -9,8 +12,15 @@ package ie.lyit.gui;
 
 public class MainFrame extends javax.swing.JFrame {
     
+    // Instances
+    Random rand = new Random();
+    SortedArray sorted;
+    InvertedArray invert;
+    UnSortedArray unsort;
+    BubbleSort bubble;
+    
     public MainFrame() { 
-        // Initializes all of the GUI components
+    // Initializes all of the GUI components
         initComponents();  
     }
     // Builds the entire GUI (IDE generated code ..can be ignored)
@@ -347,11 +357,16 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jLabel4.setText("Select array size:");
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1000", "10,000", "100,000" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1000", "10000", "100000" }));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         bubbleButt.setText("Bubble");
+        bubbleButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubbleButtActionPerformed(evt);
+            }
+        });
 
         enhancedButt.setText("Enhanced");
 
@@ -929,6 +944,27 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bubbleButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubbleButtActionPerformed
+        // Convert object in combobox to integer
+        int size = Integer.valueOf((String)comboBox.getSelectedItem());
+        //Create array
+        int[] data = new int[size];
+        
+        // Intialize objects
+        sorted = new SortedArray();
+        unsort = new UnSortedArray();
+        invert = new InvertedArray();
+        bubble = new BubbleSort();
+        
+        // Bubble with sorted array
+        bubble.bubbleSort(sorted.sortedArray(rand,data));
+        bubTimeT1.setText(""+bubble.getFinishTime());
+        // Bubble with inverse array
+        bubble.bubbleSort(invert.inverseArray(rand,data));
+        bubTimeT2.setText(""+bubble.getFinishTime());
+       
+    }//GEN-LAST:event_bubbleButtActionPerformed
 
     public static void main(String args[]) {
         

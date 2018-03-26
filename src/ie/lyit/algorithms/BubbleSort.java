@@ -1,13 +1,16 @@
 package ie.lyit.algorithms;
 
 /**
- *
  * @author James Fallon
  */
 public class BubbleSort {
     
+    private long startTime;
+    private long finishTime;
     
-    public int[] bubbleSort(int array[]){	
+    // Bubble sort
+    public int[] bubbleSort(int array[]){
+    startTime = System.nanoTime();
     for(int i=0;i<array.length;i++){
 	for(int j=0;j<array.length-1;j++){
             if(array[j] > array[j+1]){			
@@ -17,7 +20,12 @@ public class BubbleSort {
                     }
 		}	
             }
-	return array;
-	}
-      
+    finishTime = (System.nanoTime() - startTime);
+    return array;
+    } 
+    // Getter for finsih time
+    public long getFinishTime() {
+        return finishTime;
+    }
+    
 }
