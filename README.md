@@ -1,2 +1,0 @@
-# AlgorithmAssign
-Assignment Java
