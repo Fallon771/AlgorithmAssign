@@ -11,7 +11,7 @@ public class BubbleSort {
     private int comparsions;
     
     // Bubble sort
-    public int[] bubbleSort(int array[]){
+    public void bubbleSort(int array[]){
     swaps = 0;
     comparsions = 0;
     startTime = System.nanoTime();
@@ -29,7 +29,7 @@ public class BubbleSort {
 	}	
     }
     finishTime = (System.nanoTime() - startTime);
-    return array;
+ 
     } 
     
     // Getter's
@@ -41,6 +41,5 @@ public class BubbleSort {
     }
     public int getComparsions() {
         return comparsions;
-    }
-    
+    }  
 }

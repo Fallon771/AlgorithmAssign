@@ -7,11 +7,17 @@ import java.util.*;
  */
 public class UnSortedArray {
     
-    public int[] unsortedArray(Random rand,int[] data){
+    private int[] array;
+    
+    public void unsortedArray(Random rand,int[] data){
 			
         for(int i=0;i<data.length;i++){
 	data[i] = rand.nextInt(10000)+1;
             }
-	return data;
+        array = data;
 	} 
+    
+    public int[] getArrray() {
+        return array;
+    } 
 }

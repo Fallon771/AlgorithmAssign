@@ -10,16 +10,27 @@ import javax.swing.*;
  * James Fallon
  * BSc Computing Year 3
  * -- Algorithm Speed Check --
+ * IDE's Used -- NetBeans & Eclipse
  */
 
 public class MainFrame extends javax.swing.JFrame {
     
     // Instances
     Random rand = new Random();
-    SortedArray sorted;
-    InvertedArray invert;
-    UnSortedArray unsort;
-    BubbleSort bubble;
+    // Arrays
+    SortedArray sorted = new SortedArray();
+    InvertedArray invert = new InvertedArray();
+    UnSortedArray unsort = new UnSortedArray();
+    // Algorithms
+    BubbleSort bubble  = new BubbleSort();
+    SelectionSort select = new SelectionSort();
+    EnhancedBubble enhanced = new EnhancedBubble();
+    
+    int[] data;
+    int[] copyUnsort,sortedCopy,invertCopy;
+    
+    //Temp arrays to store
+    int[] sortTemp,unsortedTemp,invertedTemp;
     
     public MainFrame() { 
     // Initializes all of the GUI components
@@ -115,6 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
         insertTimeT2 = new javax.swing.JTextField();
         insertCompareT2 = new javax.swing.JTextField();
         insertSwapT2 = new javax.swing.JTextField();
+        resetButt = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -133,7 +145,7 @@ public class MainFrame extends javax.swing.JFrame {
         randomPanel.setBackground(new java.awt.Color(255, 255, 255));
         randomPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Unsorted Array", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 0))); // NOI18N
 
-        timeLabel.setText("Time taken:");
+        timeLabel.setText("Time taken (Nano):");
 
         compareLabel.setText("Comparsions:");
 
@@ -319,7 +331,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addContainerGap()))))
         );
 
-        bannerPanel.setBackground(new java.awt.Color(0, 204, 0));
+        bannerPanel.setBackground(new java.awt.Color(0, 153, 0));
 
         logoLabel.setFont(new java.awt.Font("DokChampa", 1, 36)); // NOI18N
         logoLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -372,12 +384,24 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         enhancedButt.setText("Enhanced");
+        enhancedButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enhancedButtActionPerformed(evt);
+            }
+        });
 
         selectButt.setText("Selection");
+        selectButt.setEnabled(false);
+        selectButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButtActionPerformed(evt);
+            }
+        });
 
         insertButt.setText("Insertion");
+        insertButt.setEnabled(false);
 
-        footerPanel.setBackground(new java.awt.Color(0, 204, 0));
+        footerPanel.setBackground(new java.awt.Color(0, 51, 0));
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
@@ -393,7 +417,7 @@ public class MainFrame extends javax.swing.JFrame {
         sortedPanel.setBackground(new java.awt.Color(255, 255, 255));
         sortedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sorted Array", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 0))); // NOI18N
 
-        timeLabel1.setText("Time taken:");
+        timeLabel1.setText("Time taken (Nano):");
 
         compareLabel1.setText("Comparsions:");
 
@@ -556,7 +580,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(randSelectP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(randInsertP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         sortedPanelLayout.setVerticalGroup(
             sortedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,7 +606,7 @@ public class MainFrame extends javax.swing.JFrame {
         invertedPanel.setBackground(new java.awt.Color(255, 255, 255));
         invertedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inverted Sort", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 0))); // NOI18N
 
-        timeLabel2.setText("Time taken:");
+        timeLabel2.setText("Time taken (Nano):");
 
         compareLabel2.setText("Comparsions:");
 
@@ -745,7 +769,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(randSelectP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(randInsertP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         invertedPanelLayout.setVerticalGroup(
             invertedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,6 +792,9 @@ public class MainFrame extends javax.swing.JFrame {
                             .addContainerGap()))))
         );
 
+        resetButt.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        resetButt.setText("Reset");
+
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
@@ -782,6 +809,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(resetButt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bubbleButt, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -808,7 +837,8 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(insertButt)
                         .addComponent(selectButt)
                         .addComponent(enhancedButt)
-                        .addComponent(bubbleButt)))
+                        .addComponent(bubbleButt))
+                    .addComponent(resetButt, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -952,42 +982,82 @@ public class MainFrame extends javax.swing.JFrame {
         // Convert object in combobox to integer
         int size = Integer.valueOf((String)comboBox.getSelectedItem());
         //Create array
-        int[] data = new int[size];
+        data = new int[size];
+          
+        // Create the arrays
+        unsort.unsortedArray(rand,data);
+        sorted.sortedArray(rand,data);
+        invert.inverseArray(rand,data);
         
-        // Intialize objects
-        sorted = new SortedArray();
-        unsort = new UnSortedArray();
-        invert = new InvertedArray();
-        bubble = new BubbleSort();
+        // Create clone copies of the arrays,otherwise they will end up sorted and identical after sorting
+        // These copies will be used in the other action listeners
+        copyUnsort = unsort.getArrray().clone();
+        sortedCopy = sorted.getArray().clone();
+        invertCopy = invert.getArray().clone();
         
         // BubbleSort with unsorted random array
-        bubble.bubbleSort(unsort.unsortedArray(rand,data));
+        bubble.bubbleSort(unsort.getArrray());
         bubTimeT.setText(""+bubble.getFinishTime());
         bubCompareT.setText(""+bubble.getComparsions());
         bubSwapT.setText(""+bubble.getSwaps());
-        
+       
         // BubbleSort with sorted array
         bubble.bubbleSort(sorted.sortedArray(rand,data));
         bubTimeT1.setText(""+bubble.getFinishTime());
         bubCompareT1.setText(""+bubble.getComparsions());
         bubSwapT1.setText(""+bubble.getSwaps());
-        System.out.println(bubble.getSwaps());
         
         // BubbleSort with inverse array
         bubble.bubbleSort(invert.inverseArray(rand,data));
         bubTimeT2.setText(""+bubble.getFinishTime());
         bubCompareT2.setText(""+bubble.getComparsions());
         bubSwapT2.setText(""+bubble.getSwaps());
+        
+        selectButt.setEnabled(true);
+        comboBox.setEnabled(false);
         // Set Borders
         //setBorderColors();
 
     }//GEN-LAST:event_bubbleButtActionPerformed
-    public void setBorderColors(){
+
+    private void selectButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtActionPerformed
+      
+        
+        select.selectionSort(unsort.getArrray());
+        selectTimeT.setText(""+select.getFinishTime());
+        selectCompareT.setText(""+select.getComparsions());
+        selectSwapT.setText(""+select.getSwaps());
+        
+        select.selectionSort(sorted.getArray());
+        selectTimeT1.setText(""+select.getFinishTime());
+        selectCompareT1.setText(""+select.getComparsions());
+        selectSwapT1.setText(""+select.getSwaps());
+        
+        select.selectionSort(invert.getArray());
+        selectTimeT2.setText(""+select.getFinishTime());
+        selectCompareT2.setText(""+select.getComparsions());
+        selectSwapT2.setText(""+select.getSwaps());
+        selectButt.setEnabled(false);
+    }//GEN-LAST:event_selectButtActionPerformed
+
+    private void enhancedButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhancedButtActionPerformed
+       
+        
+       enhanced.bubbleSortTweak(copyUnsort);
+       enhanceTimeT.setText(""+enhanced.getFinishTime());
+       enhanceCompareT.setText(""+enhanced.getComparsions());
+       enhanceSwapT.setText(""+enhanced.getSwaps());
+       
+       selectButt.setEnabled(true);
+       
+        
+    }//GEN-LAST:event_enhancedButtActionPerformed
+    public void setBorderColors(JPanel sort){
         if(Integer.parseInt(bubTimeT.getText()) > Integer.parseInt(bubTimeT1.getText()) ){
-        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+        randEnhancedP.setBorder(BorderFactory.createLineBorder(Color.green, 3));
         }
         else{
-        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.green, 2));
+        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.red, 3));
         }
     }
     public static void main(String args[]) {
@@ -1090,6 +1160,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel randSelectP1;
     private javax.swing.JPanel randSelectP2;
     private javax.swing.JPanel randomPanel;
+    private javax.swing.JButton resetButt;
     private javax.swing.JButton selectButt;
     private javax.swing.JTextField selectCompareT;
     private javax.swing.JTextField selectCompareT1;

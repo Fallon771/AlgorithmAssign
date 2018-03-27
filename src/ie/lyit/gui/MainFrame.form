@@ -69,6 +69,8 @@
                           <Component id="jLabel4" min="-2" pref="153" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="comboBox" min="-2" pref="118" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="resetButt" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="bubbleButt" min="-2" pref="103" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -102,6 +104,7 @@
                           <Component id="enhancedButt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bubbleButt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="resetButt" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -184,7 +187,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="timeLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Time taken:"/>
+                <Property name="text" type="java.lang.String" value="Time taken (Nano):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="compareLabel">
@@ -461,7 +464,7 @@
         <Container class="javax.swing.JPanel" name="bannerPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="cc" red="0" type="rgb"/>
+              <Color blue="0" green="99" red="0" type="rgb"/>
             </Property>
           </Properties>
 
@@ -569,21 +572,29 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Enhanced"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enhancedButtActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="selectButt">
           <Properties>
             <Property name="text" type="java.lang.String" value="Selection"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectButtActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="insertButt">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insertion"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="footerPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="cc" red="0" type="rgb"/>
+              <Color blue="0" green="33" red="0" type="rgb"/>
             </Property>
           </Properties>
 
@@ -632,7 +643,7 @@
                       <Component id="randSelectP1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="randInsertP1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -666,7 +677,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="timeLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Time taken:"/>
+                <Property name="text" type="java.lang.String" value="Time taken (Nano):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="compareLabel1">
@@ -972,7 +983,7 @@
                       <Component id="randSelectP2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="randInsertP2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1006,7 +1017,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="timeLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Time taken:"/>
+                <Property name="text" type="java.lang.String" value="Time taken (Nano):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="compareLabel2">
@@ -1280,6 +1291,14 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="resetButt">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="10" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Reset"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel12">
