@@ -7,25 +7,40 @@ public class BubbleSort {
     
     private long startTime;
     private long finishTime;
+    private int swaps;
+    private int comparsions;
     
     // Bubble sort
     public int[] bubbleSort(int array[]){
+    swaps = 0;
+    comparsions = 0;
     startTime = System.nanoTime();
     for(int i=0;i<array.length;i++){
 	for(int j=0;j<array.length-1;j++){
-            if(array[j] > array[j+1]){			
-		int temp = array[j+1];
-		array[j+1] = array[j];
-		array[j] = temp;		
-                    }
-		}	
+        comparsions ++;
+        // Compare values
+        if(array[j] > array[j+1]){
+        // Swap values
+	int temp = array[j+1];
+        array[j+1] = array[j];
+	array[j] = temp;
+        swaps++;
             }
+	}	
+    }
     finishTime = (System.nanoTime() - startTime);
     return array;
     } 
-    // Getter for finsih time
+    
+    // Getter's
     public long getFinishTime() {
         return finishTime;
+    }
+    public int getSwaps() {
+        return swaps;
+    }
+    public int getComparsions() {
+        return comparsions;
     }
     
 }

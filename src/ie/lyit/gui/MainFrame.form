@@ -3,6 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Speed Tester"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -124,7 +125,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Random Sorted Array">
+                <TitledBorder title="Unsorted Array">
                   <Color PropertyName="color" blue="0" green="66" red="0" type="rgb"/>
                 </TitledBorder>
               </Border>
@@ -624,7 +625,7 @@
                           <Component id="timeLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="randBubbleP1" min="-2" max="-2" attributes="0"/>
+                      <Component id="sortBubbleP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="randEnhancedP1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -653,7 +654,7 @@
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="randBubbleP1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sortBubbleP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -678,7 +679,7 @@
                 <Property name="text" type="java.lang.String" value="Swap Operations:"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="randBubbleP1">
+            <Container class="javax.swing.JPanel" name="sortBubbleP">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -964,7 +965,7 @@
                           <Component id="timeLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="randBubbleP2" min="-2" max="-2" attributes="0"/>
+                      <Component id="invertBubbleP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="randEnhancedP2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -993,7 +994,7 @@
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="randBubbleP2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invertBubbleP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1018,7 +1019,7 @@
                 <Property name="text" type="java.lang.String" value="Swap Operations:"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="randBubbleP2">
+            <Container class="javax.swing.JPanel" name="invertBubbleP">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

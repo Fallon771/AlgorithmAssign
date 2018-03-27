@@ -1,7 +1,9 @@
 package ie.lyit.gui;
 import ie.lyit.algorithms.*;
 import ie.lyit.arrays.*;
+import java.awt.*;
 import java.util.*;
+import javax.swing.*;
 
 /**
  * Author: 
@@ -69,7 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
         timeLabel1 = new javax.swing.JLabel();
         compareLabel1 = new javax.swing.JLabel();
         swapLabel1 = new javax.swing.JLabel();
-        randBubbleP1 = new javax.swing.JPanel();
+        sortBubbleP = new javax.swing.JPanel();
         bubbleLabel1 = new javax.swing.JLabel();
         bubTimeT1 = new javax.swing.JTextField();
         bubCompareT1 = new javax.swing.JTextField();
@@ -93,7 +95,7 @@ public class MainFrame extends javax.swing.JFrame {
         timeLabel2 = new javax.swing.JLabel();
         compareLabel2 = new javax.swing.JLabel();
         swapLabel2 = new javax.swing.JLabel();
-        randBubbleP2 = new javax.swing.JPanel();
+        invertBubbleP = new javax.swing.JPanel();
         bubbleLabel2 = new javax.swing.JLabel();
         bubTimeT2 = new javax.swing.JTextField();
         bubCompareT2 = new javax.swing.JTextField();
@@ -123,12 +125,13 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Speed Tester");
         setResizable(false);
 
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         randomPanel.setBackground(new java.awt.Color(255, 255, 255));
-        randomPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Random Sorted Array", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 0))); // NOI18N
+        randomPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Unsorted Array", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 102, 0))); // NOI18N
 
         timeLabel.setText("Time taken:");
 
@@ -396,31 +399,31 @@ public class MainFrame extends javax.swing.JFrame {
 
         swapLabel1.setText("Swap Operations:");
 
-        randBubbleP1.setBackground(new java.awt.Color(255, 255, 255));
-        randBubbleP1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        randBubbleP1.setPreferredSize(new java.awt.Dimension(150, 115));
+        sortBubbleP.setBackground(new java.awt.Color(255, 255, 255));
+        sortBubbleP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sortBubbleP.setPreferredSize(new java.awt.Dimension(150, 115));
 
         bubbleLabel1.setFont(new java.awt.Font("Dubai", 0, 12)); // NOI18N
         bubbleLabel1.setText("Bubble Sort");
 
-        javax.swing.GroupLayout randBubbleP1Layout = new javax.swing.GroupLayout(randBubbleP1);
-        randBubbleP1.setLayout(randBubbleP1Layout);
-        randBubbleP1Layout.setHorizontalGroup(
-            randBubbleP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randBubbleP1Layout.createSequentialGroup()
+        javax.swing.GroupLayout sortBubblePLayout = new javax.swing.GroupLayout(sortBubbleP);
+        sortBubbleP.setLayout(sortBubblePLayout);
+        sortBubblePLayout.setHorizontalGroup(
+            sortBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortBubblePLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(randBubbleP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(sortBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bubSwapT1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bubTimeT1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bubCompareT1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(randBubbleP1Layout.createSequentialGroup()
+                    .addGroup(sortBubblePLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(bubbleLabel1)))
                 .addGap(0, 29, Short.MAX_VALUE))
         );
-        randBubbleP1Layout.setVerticalGroup(
-            randBubbleP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randBubbleP1Layout.createSequentialGroup()
+        sortBubblePLayout.setVerticalGroup(
+            sortBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortBubblePLayout.createSequentialGroup()
                 .addComponent(bubbleLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bubTimeT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -546,7 +549,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(swapLabel1)
                     .addComponent(timeLabel1))
                 .addGap(38, 38, 38)
-                .addComponent(randBubbleP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sortBubbleP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(randEnhancedP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -572,7 +575,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(swapLabel1)
                             .addGap(18, 18, 18))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sortedPanelLayout.createSequentialGroup()
-                            .addComponent(randBubbleP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sortBubbleP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap()))))
         );
 
@@ -585,31 +588,31 @@ public class MainFrame extends javax.swing.JFrame {
 
         swapLabel2.setText("Swap Operations:");
 
-        randBubbleP2.setBackground(new java.awt.Color(255, 255, 255));
-        randBubbleP2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        randBubbleP2.setPreferredSize(new java.awt.Dimension(150, 115));
+        invertBubbleP.setBackground(new java.awt.Color(255, 255, 255));
+        invertBubbleP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        invertBubbleP.setPreferredSize(new java.awt.Dimension(150, 115));
 
         bubbleLabel2.setFont(new java.awt.Font("Dubai", 0, 12)); // NOI18N
         bubbleLabel2.setText("Bubble Sort");
 
-        javax.swing.GroupLayout randBubbleP2Layout = new javax.swing.GroupLayout(randBubbleP2);
-        randBubbleP2.setLayout(randBubbleP2Layout);
-        randBubbleP2Layout.setHorizontalGroup(
-            randBubbleP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randBubbleP2Layout.createSequentialGroup()
+        javax.swing.GroupLayout invertBubblePLayout = new javax.swing.GroupLayout(invertBubbleP);
+        invertBubbleP.setLayout(invertBubblePLayout);
+        invertBubblePLayout.setHorizontalGroup(
+            invertBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(invertBubblePLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(randBubbleP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(invertBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bubSwapT2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bubTimeT2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bubCompareT2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(randBubbleP2Layout.createSequentialGroup()
+                    .addGroup(invertBubblePLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(bubbleLabel2)))
                 .addGap(0, 29, Short.MAX_VALUE))
         );
-        randBubbleP2Layout.setVerticalGroup(
-            randBubbleP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(randBubbleP2Layout.createSequentialGroup()
+        invertBubblePLayout.setVerticalGroup(
+            invertBubblePLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(invertBubblePLayout.createSequentialGroup()
                 .addComponent(bubbleLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bubTimeT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -735,7 +738,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(swapLabel2)
                     .addComponent(timeLabel2))
                 .addGap(38, 38, 38)
-                .addComponent(randBubbleP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(invertBubbleP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(randEnhancedP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -761,7 +764,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(swapLabel2)
                             .addGap(18, 18, 18))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, invertedPanelLayout.createSequentialGroup()
-                            .addComponent(randBubbleP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertBubbleP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addContainerGap()))))
         );
 
@@ -957,15 +960,36 @@ public class MainFrame extends javax.swing.JFrame {
         invert = new InvertedArray();
         bubble = new BubbleSort();
         
-        // Bubble with sorted array
+        // BubbleSort with unsorted random array
+        bubble.bubbleSort(unsort.unsortedArray(rand,data));
+        bubTimeT.setText(""+bubble.getFinishTime());
+        bubCompareT.setText(""+bubble.getComparsions());
+        bubSwapT.setText(""+bubble.getSwaps());
+        
+        // BubbleSort with sorted array
         bubble.bubbleSort(sorted.sortedArray(rand,data));
         bubTimeT1.setText(""+bubble.getFinishTime());
-        // Bubble with inverse array
+        bubCompareT1.setText(""+bubble.getComparsions());
+        bubSwapT1.setText(""+bubble.getSwaps());
+        System.out.println(bubble.getSwaps());
+        
+        // BubbleSort with inverse array
         bubble.bubbleSort(invert.inverseArray(rand,data));
         bubTimeT2.setText(""+bubble.getFinishTime());
-       
-    }//GEN-LAST:event_bubbleButtActionPerformed
+        bubCompareT2.setText(""+bubble.getComparsions());
+        bubSwapT2.setText(""+bubble.getSwaps());
+        // Set Borders
+        //setBorderColors();
 
+    }//GEN-LAST:event_bubbleButtActionPerformed
+    public void setBorderColors(){
+        if(Integer.parseInt(bubTimeT.getText()) > Integer.parseInt(bubTimeT1.getText()) ){
+        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+        }
+        else{
+        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.green, 2));
+        }
+    }
     public static void main(String args[]) {
         
         // Set the look and feel for the Java GUI(Metal)
@@ -1041,6 +1065,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField insertTimeT;
     private javax.swing.JTextField insertTimeT1;
     private javax.swing.JTextField insertTimeT2;
+    private javax.swing.JPanel invertBubbleP;
     private javax.swing.JPanel invertedPanel;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
@@ -1055,8 +1080,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JSeparator logoLine;
     private javax.swing.JPanel randBubbleP;
-    private javax.swing.JPanel randBubbleP1;
-    private javax.swing.JPanel randBubbleP2;
     private javax.swing.JPanel randEnhancedP;
     private javax.swing.JPanel randEnhancedP1;
     private javax.swing.JPanel randEnhancedP2;
@@ -1080,6 +1103,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField selectTimeT;
     private javax.swing.JTextField selectTimeT1;
     private javax.swing.JTextField selectTimeT2;
+    private javax.swing.JPanel sortBubbleP;
     private javax.swing.JPanel sortedPanel;
     private javax.swing.JLabel speedIcon;
     private javax.swing.JLabel swapLabel;
