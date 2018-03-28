@@ -3,18 +3,18 @@ import java.util.*;
 
 /**
  * Author James Fallon
- * Unsorted Array
  */
 public class UnSortedArray {
     
     private int[] array;
     
     public void unsortedArray(Random rand,int[] data){
-			
+	// Populate with random numbers		
         for(int i=0;i<data.length;i++){
 	data[i] = rand.nextInt(10000)+1;
             }
-        array = data;
+        // Clone array..(create separate copy in memory)
+        array = data.clone();
 	} 
     
     public int[] getArrray() {

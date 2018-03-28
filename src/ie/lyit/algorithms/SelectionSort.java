@@ -9,7 +9,7 @@ public class SelectionSort {
     
     private long startTime;
     private long finishTime;
-    private int swaps;
+    private long swaps;
     private int comparsions;
     
     public void selectionSort(int[] array){	
@@ -37,7 +37,7 @@ public class SelectionSort {
         return finishTime;
     }
 
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
 

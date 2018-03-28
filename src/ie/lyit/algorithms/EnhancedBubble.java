@@ -5,7 +5,7 @@ package ie.lyit.algorithms;
  */
 public class EnhancedBubble {
     
-    private int swaps;
+    private long swaps;
     private int comparsions;
     long startTime;
     long finishTime;
@@ -16,7 +16,7 @@ public class EnhancedBubble {
 	boolean arraySorted = false;
         comparsions = 0;
         swaps = 0;
-	long startTime = System.nanoTime();
+	startTime = System.nanoTime();
         
 	for(int i =0;i<data.length && !arraySorted;i++){	
 	arraySorted = true;
@@ -32,24 +32,20 @@ public class EnhancedBubble {
             }		
 	}
 	finishTime = System.nanoTime() - startTime;
-        array = data;		
+        array = data.clone();		
 	} 
     
     // Getter's
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
-
     public int getComparsions() {
         return comparsions;
     }
-
     public long getFinishTime() {
         return finishTime;
     }
-
     public int[] getArray() {
         return array;
-    }
-    
+    }    
 }

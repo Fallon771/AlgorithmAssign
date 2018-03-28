@@ -10,33 +10,44 @@ import javax.swing.*;
  * James Fallon
  * BSc Computing Year 3
  * -- Algorithm Speed Check --
+ * 
+ * -------------------------------------------------------------------------------
+ * This program uses different arrays which have been cloned from an original,
+ * this should ensure that all algorithms being tested are using the same data set
+ * for better accuracy.
+ * --------------------------------------------------------------------------------
+ * 
  * IDE's Used -- NetBeans & Eclipse
  */
 
 public class MainFrame extends javax.swing.JFrame {
     
-    // Instances
+    // Random object
     Random rand = new Random();
-    // Arrays
+    // Array class objects
     SortedArray sorted = new SortedArray();
     InvertedArray invert = new InvertedArray();
     UnSortedArray unsort = new UnSortedArray();
-    // Algorithms
+    // Algorithm objects
     BubbleSort bubble  = new BubbleSort();
     SelectionSort select = new SelectionSort();
     EnhancedBubble enhanced = new EnhancedBubble();
+    InsertionSort insert = new InsertionSort();
     
+    // Array for passsing into array classes 
     int[] data;
-    int[] copyUnsort,sortedCopy,invertCopy;
     
-    //Temp arrays to store
-    int[] sortTemp,unsortedTemp,invertedTemp;
     
-    public MainFrame() { 
+    // Arrays for storing clones
+    int[] unsortCopy,unsortCopy2,unsortCopy3;
+    int[] sortedCopy,sortedCopy2,sortedCopy3;
+    int[] invertCopy,invertCopy2,invertCopy3;
+    
     // Initializes all of the GUI components
+    public MainFrame() { 
         initComponents();  
     }
-    // Builds the entire GUI (IDE generated code ..can be ignored)
+    // Builds the entire GUI (Netbeans IDE generated code..can be ignored)
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -384,6 +395,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         enhancedButt.setText("Enhanced");
+        enhancedButt.setEnabled(false);
         enhancedButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enhancedButtActionPerformed(evt);
@@ -400,6 +412,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         insertButt.setText("Insertion");
         insertButt.setEnabled(false);
+        insertButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertButtActionPerformed(evt);
+            }
+        });
 
         footerPanel.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -983,17 +1000,14 @@ public class MainFrame extends javax.swing.JFrame {
         int size = Integer.valueOf((String)comboBox.getSelectedItem());
         //Create array
         data = new int[size];
-          
-        // Create the arrays
-        unsort.unsortedArray(rand,data);
-        sorted.sortedArray(rand,data);
-        invert.inverseArray(rand,data);
+        // Create the arrays (unsorted,sorted,inverted)
+        createArrays(rand,data);
         
         // Create clone copies of the arrays,otherwise they will end up sorted and identical after sorting
-        // These copies will be used in the other action listeners
-        copyUnsort = unsort.getArrray().clone();
-        sortedCopy = sorted.getArray().clone();
-        invertCopy = invert.getArray().clone();
+        // these copies will be used in the other action listeners
+        unsortClone();
+        sortClone();
+        invertClone();
         
         // BubbleSort with unsorted random array
         bubble.bubbleSort(unsort.getArrray());
@@ -1002,63 +1016,179 @@ public class MainFrame extends javax.swing.JFrame {
         bubSwapT.setText(""+bubble.getSwaps());
        
         // BubbleSort with sorted array
-        bubble.bubbleSort(sorted.sortedArray(rand,data));
+        bubble.bubbleSort(sorted.getArray());
         bubTimeT1.setText(""+bubble.getFinishTime());
         bubCompareT1.setText(""+bubble.getComparsions());
         bubSwapT1.setText(""+bubble.getSwaps());
         
         // BubbleSort with inverse array
-        bubble.bubbleSort(invert.inverseArray(rand,data));
+        bubble.bubbleSort(invert.getArray());
         bubTimeT2.setText(""+bubble.getFinishTime());
         bubCompareT2.setText(""+bubble.getComparsions());
         bubSwapT2.setText(""+bubble.getSwaps());
         
-        selectButt.setEnabled(true);
+        enhancedButt.setEnabled(true);
+        bubbleButt.setEnabled(false);
         comboBox.setEnabled(false);
         // Set Borders
         //setBorderColors();
 
     }//GEN-LAST:event_bubbleButtActionPerformed
-
+    // Methods that create clone copies of reqired arrays
+    public void createArrays(Random rand,int[] data){
+        unsort.unsortedArray(rand,data);
+        sorted.sortedArray(rand,data);
+        invert.inverseArray(rand,data);
+    }
+    public void unsortClone(){
+        unsortCopy = unsort.getArrray().clone();
+        unsortCopy2 = unsort.getArrray().clone();
+        unsortCopy3 = unsort.getArrray().clone();
+    }
+    public void sortClone(){
+        sortedCopy = sorted.getArray().clone();
+        sortedCopy2 = sorted.getArray().clone();
+        sortedCopy3 = sorted.getArray().clone();
+    }
+    public void invertClone(){
+        invertCopy = invert.getArray().clone();
+        invertCopy2 = invert.getArray().clone();
+        invertCopy3= invert.getArray().clone();
+    }
     private void selectButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtActionPerformed
       
-        
-        select.selectionSort(unsort.getArrray());
+        // Selection sort with unsorted array
+        select.selectionSort(unsortCopy2);
         selectTimeT.setText(""+select.getFinishTime());
         selectCompareT.setText(""+select.getComparsions());
         selectSwapT.setText(""+select.getSwaps());
-        
-        select.selectionSort(sorted.getArray());
+        // Selection sort with sorted array
+        select.selectionSort(sortedCopy2);
         selectTimeT1.setText(""+select.getFinishTime());
         selectCompareT1.setText(""+select.getComparsions());
         selectSwapT1.setText(""+select.getSwaps());
-        
-        select.selectionSort(invert.getArray());
+        // Selection sort with inverted array
+        select.selectionSort(invertCopy2);
         selectTimeT2.setText(""+select.getFinishTime());
         selectCompareT2.setText(""+select.getComparsions());
         selectSwapT2.setText(""+select.getSwaps());
+        // Disable buttons
         selectButt.setEnabled(false);
+        insertButt.setEnabled(true);
+        
     }//GEN-LAST:event_selectButtActionPerformed
 
     private void enhancedButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhancedButtActionPerformed
        
-        
-       enhanced.bubbleSortTweak(copyUnsort);
+       // Enhanced sort with unsorted array
+       enhanced.bubbleSortTweak(unsortCopy);
        enhanceTimeT.setText(""+enhanced.getFinishTime());
        enhanceCompareT.setText(""+enhanced.getComparsions());
        enhanceSwapT.setText(""+enhanced.getSwaps());
-       
-       selectButt.setEnabled(true);
-       
-        
+       // Enhanced sort with sorted array
+       enhanced.bubbleSortTweak(sortedCopy);
+       enhanceTimeT1.setText(""+enhanced.getFinishTime());
+       enhanceCompareT1.setText(""+enhanced.getComparsions());
+       enhanceSwapT1.setText(""+enhanced.getSwaps());
+       // Enhanced sort with inverted array
+       enhanced.bubbleSortTweak(invertCopy);
+       enhanceTimeT2.setText(""+enhanced.getFinishTime());
+       enhanceCompareT2.setText(""+enhanced.getComparsions());
+       enhanceSwapT2.setText(""+enhanced.getSwaps());
+       selectButt.setEnabled(true);   
+       enhancedButt.setEnabled(false);
     }//GEN-LAST:event_enhancedButtActionPerformed
-    public void setBorderColors(JPanel sort){
-        if(Integer.parseInt(bubTimeT.getText()) > Integer.parseInt(bubTimeT1.getText()) ){
-        randEnhancedP.setBorder(BorderFactory.createLineBorder(Color.green, 3));
+
+    private void insertButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtActionPerformed
+           
+        insert.insertionSort(unsortCopy3);
+        insertTimeT.setText(""+insert.getFinishTime());
+        insertCompareT.setText(""+insert.getComparsions());
+        insertSwapT.setText(""+insert.getSwaps());
+        
+        insert.insertionSort(sortedCopy3);
+        insertTimeT1.setText(""+insert.getFinishTime());
+        insertCompareT1.setText(""+insert.getComparsions());
+        insertSwapT1.setText(""+insert.getSwaps());
+        
+        insert.insertionSort(invertCopy3);
+        insertTimeT2.setText(""+insert.getFinishTime());
+        insertCompareT2.setText(""+insert.getComparsions());
+        insertSwapT2.setText(""+insert.getSwaps());
+        insertButt.setEnabled(false);
+        //setUnsortedColors();
+        setSortedColors();
+              
+    }//GEN-LAST:event_insertButtActionPerformed
+    public void setUnsortedColors(){
+        // Store vlaues from fields
+        long[] colors = new long[4];
+        colors[0] = Long.parseLong(insertTimeT.getText());
+        colors[1] = Long.parseLong(bubTimeT.getText());
+        colors[2] = Long.parseLong(selectTimeT.getText());
+        colors[3] = Long.parseLong(enhanceTimeT.getText());
+        JTextField[] x = new JTextField[4];
+        x[0] = insertTimeT;
+        x[1] = bubTimeT;
+        x[2] = selectTimeT;
+        x[3] = enhanceTimeT;
+
+        //Sort list
+        Arrays.sort(colors);
+        // Loop and compare values in the arrays,then change background
+        for(int i=0;i<colors.length;i++){
+            for(int j=0;j<colors.length-1;j++){
+            if(colors[i] == Long.parseLong(x[j].getText()) && i == 0){
+                x[j].getParent().setBackground(Color.green);
+                }      
+            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 2){
+                x[j+1].getParent().setBackground(Color.orange);
+                }
+            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 1){
+                x[j+1].getParent().setBackground(Color.yellow);
+                }
+            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 3){
+                x[j+1].getParent().setBackground(Color.red);
+                }
+            }
+        } // End of for loop       
+    }
+    public void setSortedColors(){
+        long[] colors = new long[4];
+      // Store vlaues from fields
+        colors[0] = Long.parseLong(insertTimeT1.getText());
+        colors[1] = Long.parseLong(bubTimeT1.getText());
+        colors[2] = Long.parseLong(selectTimeT1.getText());
+        colors[3] = Long.parseLong(enhanceTimeT1.getText());
+        JTextField[] y = new JTextField[4];
+        y[0] = insertTimeT1;
+        y[1] = bubTimeT1;
+        y[2] = selectTimeT1;
+        y[3] = enhanceTimeT1;
+
+        //Sort list
+        Arrays.sort(colors);
+        for(long x:colors){
+            System.out.println(x);
         }
-        else{
-        randBubbleP.setBorder(BorderFactory.createLineBorder(Color.red, 3));
-        }
+        
+        // Loop and compare values in the arrays,then change background
+        for(int i=0;i<colors.length;i++){
+            for(int j=0;j<colors.length-1;j++){
+            if(colors[i] == Long.parseLong(y[j].getText()) && i == 0){
+                y[j].getParent().setBackground(Color.green);
+                }      
+            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 2){
+                y[j+1].getParent().setBackground(Color.orange);
+                }
+            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 1){
+                y[j+1].getParent().setBackground(Color.yellow);
+                }
+            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 3){
+                y[j+1].getParent().setBackground(Color.red);
+                }
+            }
+        } // End of for loop    
     }
     public static void main(String args[]) {
         
@@ -1133,7 +1263,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField insertSwapT1;
     private javax.swing.JTextField insertSwapT2;
     private javax.swing.JTextField insertTimeT;
-    private javax.swing.JTextField insertTimeT1;
+    public javax.swing.JTextField insertTimeT1;
     private javax.swing.JTextField insertTimeT2;
     private javax.swing.JPanel invertBubbleP;
     private javax.swing.JPanel invertedPanel;

@@ -7,7 +7,7 @@ public class BubbleSort {
     
     private long startTime;
     private long finishTime;
-    private int swaps;
+    private long swaps;
     private int comparsions;
     
     // Bubble sort
@@ -27,16 +27,15 @@ public class BubbleSort {
         swaps++;
             }
 	}	
-    }
+      }
     finishTime = (System.nanoTime() - startTime);
- 
     } 
     
     // Getter's
     public long getFinishTime() {
         return finishTime;
     }
-    public int getSwaps() {
+    public long getSwaps() {
         return swaps;
     }
     public int getComparsions() {

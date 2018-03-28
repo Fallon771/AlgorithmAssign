@@ -571,6 +571,7 @@
         <Component class="javax.swing.JButton" name="enhancedButt">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enhanced"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enhancedButtActionPerformed"/>
@@ -590,6 +591,9 @@
             <Property name="text" type="java.lang.String" value="Insertion"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertButtActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="footerPanel">
           <Properties>
@@ -942,6 +946,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="insertTimeT1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="insertCompareT1">
                 </Component>
