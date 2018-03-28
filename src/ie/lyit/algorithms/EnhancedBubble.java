@@ -7,18 +7,19 @@ public class EnhancedBubble {
     
     private long swaps;
     private int comparsions;
-    long startTime;
-    long finishTime;
+    private long startTime;
+    private long finishTime;
+    private boolean arraySorted; 
     int[] array;
     
     public void bubbleSortTweak(int data[]){
 			
-	boolean arraySorted = false;
+	arraySorted = false;
         comparsions = 0;
         swaps = 0;
 	startTime = System.nanoTime();
         
-	for(int i =0;i<data.length && !arraySorted;i++){	
+	for(int i =0;i < data.length && !arraySorted;i++){	
 	arraySorted = true;
             for(int j=0;j<data.length-i-1;j++){
                 comparsions++;
