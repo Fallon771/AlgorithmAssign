@@ -88,6 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
         selectButt = new javax.swing.JButton();
         insertButt = new javax.swing.JButton();
         footerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         sortedPanel = new javax.swing.JPanel();
         timeLabel1 = new javax.swing.JLabel();
         compareLabel1 = new javax.swing.JLabel();
@@ -419,15 +420,23 @@ public class MainFrame extends javax.swing.JFrame {
 
         footerPanel.setBackground(new java.awt.Color(0, 204, 0));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 9)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Author J.Fallon L00131059");
+
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
         footerPanelLayout.setHorizontalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(footerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         footerPanelLayout.setVerticalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 23, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
 
         sortedPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -810,6 +819,11 @@ public class MainFrame extends javax.swing.JFrame {
 
         resetButt.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         resetButt.setText("Reset");
+        resetButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
@@ -987,7 +1001,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(234, 234, 234)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(355, Short.MAX_VALUE)))
+                    .addContainerGap(360, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1004,9 +1018,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         // Create clone copies of the arrays,otherwise they will end up sorted and identical after sorting
         // these copies will be used in the other action listeners
-        unsortClone();
-        sortClone();
-        invertClone();
+        cloneArrays();
         
         // BubbleSort with unsorted random array
         bubble.bubbleSort(unsort.getArrray());
@@ -1037,17 +1049,16 @@ public class MainFrame extends javax.swing.JFrame {
         sorted.sortedArray(rand,data);
         invert.inverseArray(rand,data);
     }
-    public void unsortClone(){
+    public void cloneArrays(){
+        // Get & clone arrays( clones needed because of the sorting,need a seprate object copy of array,not a referance)
         unsortCopy = unsort.getArrray().clone();
         unsortCopy2 = unsort.getArrray().clone();
         unsortCopy3 = unsort.getArrray().clone();
-    }
-    public void sortClone(){
+        
         sortedCopy = sorted.getArray().clone();
         sortedCopy2 = sorted.getArray().clone();
         sortedCopy3 = sorted.getArray().clone();
-    }
-    public void invertClone(){
+        
         invertCopy = invert.getArray().clone();
         invertCopy2 = invert.getArray().clone();
         invertCopy3= invert.getArray().clone();
@@ -1097,70 +1108,95 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_enhancedButtActionPerformed
 
     private void insertButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtActionPerformed
-           
+        
+        // Insertsort with unsorted array
         insert.insertionSort(unsortCopy3);
         insertTimeT.setText(""+insert.getFinishTime());
         insertCompareT.setText(""+insert.getComparsions());
         insertSwapT.setText(""+insert.getSwaps());
-        
+        // Insertsort with sorted array
         insert.insertionSort(sortedCopy3);
         insertTimeT1.setText(""+insert.getFinishTime());
         insertCompareT1.setText(""+insert.getComparsions());
         insertSwapT1.setText(""+insert.getSwaps());
-        
+        // Insertsort with inverted array
         insert.insertionSort(invertCopy3);
         insertTimeT2.setText(""+insert.getFinishTime());
         insertCompareT2.setText(""+insert.getComparsions());
         insertSwapT2.setText(""+insert.getSwaps());
         insertButt.setEnabled(false);
         
-        //Set the colors of the panels
+        //Finally,set the colors of the panels depending on their speed(time taken)
         setColors(insertTimeT,bubTimeT,selectTimeT,enhanceTimeT);
         setColors(insertTimeT1,bubTimeT1,selectTimeT1,enhanceTimeT1);
         setColors(insertTimeT2,bubTimeT2,selectTimeT2,enhanceTimeT2);
               
     }//GEN-LAST:event_insertButtActionPerformed
-    
-    public void setSortedColors(){
-         // Store vlaues from fields
-        long[] colors = new long[4];
-        colors[0] = Long.parseLong(insertTimeT1.getText());
-        colors[1] = Long.parseLong(bubTimeT1.getText());
-        colors[2] = Long.parseLong(selectTimeT1.getText());
-        colors[3] = Long.parseLong(enhanceTimeT1.getText());
-        JTextField[] x = new JTextField[4];
-        x[0] = bubTimeT1;
-        x[1] = enhanceTimeT1;
-        x[2] = selectTimeT1;
-        x[3] = insertTimeT1;
 
-        //Sort list
-        Arrays.sort(colors);
+    private void resetButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtActionPerformed
+       //Buble reset
+       bubTimeT.setText("");
+       bubCompareT.setText("");
+       bubSwapT.setText("");
+       bubTimeT1.setText("");
+       bubCompareT1.setText("");
+       bubSwapT1.setText("");
+       bubTimeT2.setText("");
+       bubCompareT2.setText("");
+       bubSwapT2.setText("");
+       //Enhance reset
+       enhanceTimeT.setText("");
+       enhanceCompareT.setText("");
+       enhanceSwapT.setText("");
+       enhanceTimeT1.setText("");
+       enhanceCompareT1.setText("");
+       enhanceSwapT1.setText("");
+       enhanceTimeT2.setText("");
+       enhanceCompareT2.setText("");
+       enhanceSwapT2.setText("");
+       //Select reset
+       selectTimeT.setText("");
+       selectCompareT.setText("");
+       selectSwapT.setText("");
+       selectTimeT1.setText("");
+       selectCompareT1.setText("");
+       selectSwapT1.setText("");
+       selectTimeT2.setText("");
+       selectCompareT2.setText("");
+       selectSwapT2.setText("");
+       //Insert reset
+       insertTimeT.setText("");
+       insertCompareT.setText("");
+       insertSwapT.setText("");
+       insertTimeT1.setText("");
+       insertCompareT1.setText("");
+       insertSwapT1.setText("");
+       insertTimeT2.setText("");
+       insertCompareT2.setText("");
+       insertSwapT2.setText("");
        
-        System.out.println("\n");
-        // Loop and compare values in the arrays,then change background
-        for(int i=0;i<colors.length;i++){
-            for(int j=0;j<colors.length;j++){
-                if(colors[i] == Long.parseLong(x[j].getText()) && i == 0){
-                    x[j].getParent().setBackground(Color.green);
-                    break;
-                 }
-                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 1){
-                    x[j].getParent().setBackground(Color.yellow); 
-                    break;
-                 }
-                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 2){
-                    x[j].getParent().setBackground(Color.orange);           
-                    break;
-                 }
-                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 3){
-                    x[j].getParent().setBackground(Color.red);
-                    break;
-                 }     
-            }
-        } // End of for loop 
-    }
-    
+       //Color reset
+       bubTimeT.getParent().setBackground(Color.white);
+       enhanceTimeT.getParent().setBackground(Color.white);
+       selectTimeT.getParent().setBackground(Color.white);
+       insertTimeT.getParent().setBackground(Color.white);
+       bubTimeT1.getParent().setBackground(Color.white);
+       enhanceTimeT1.getParent().setBackground(Color.white);
+       selectTimeT1.getParent().setBackground(Color.white);
+       insertTimeT1.getParent().setBackground(Color.white);  
+       bubTimeT2.getParent().setBackground(Color.white);
+       enhanceTimeT2.getParent().setBackground(Color.white);
+       selectTimeT2.getParent().setBackground(Color.white);
+       insertTimeT2.getParent().setBackground(Color.white);
+      
+       //Buttons reset
+       comboBox.setEnabled(true);
+       bubbleButt.setEnabled(true);
+       enhancedButt.setEnabled(false);
+       selectButt.setEnabled(false);
+       insertButt.setEnabled(false);
+      
+    }//GEN-LAST:event_resetButtActionPerformed
     
     public void setColors(JTextField t1,JTextField t2,JTextField t3,JTextField t4){
         
@@ -1203,6 +1239,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         } // End of for loop 
     }
+    
     public static void main(String args[]) {
         
         // Set the look and feel for the Java GUI(Metal)
@@ -1279,6 +1316,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTextField insertTimeT1;
     private javax.swing.JTextField insertTimeT2;
     private javax.swing.JPanel invertedPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
