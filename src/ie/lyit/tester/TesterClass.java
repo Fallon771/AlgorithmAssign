@@ -1,5 +1,8 @@
 package ie.lyit.tester;
 
+import java.io.*;
+import java.util.logging.*;
+
 /**
  * @author jim
  */
@@ -7,23 +10,38 @@ public class TesterClass {
     
     public static void main(String args[]){
         
-        int[] data = {45,67,3,23,11,45,66,688};
-        insertionSort(data);
-        
-        for(int x:data){
-            System.out.print(x+", ");
-        }   
+        try {
+            readFile();
+        } catch (IOException ex) {
+            Logger.getLogger(TesterClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
     }
     
-    public static void insertionSort(int[] data){
-        for(int i = 1;i < data.length;i++){
-        int next = data[i];
-        int j = i;
-        while(j > 0 && data[j-1] > next){
-            data[j] = data[j-1];
-            j--;
+    public static void readFile() throws IOException{
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("..\\AlgorithmAssign\\Text Files\\alice30.txt"));
+            try {
+                StringBuilder sb = new StringBuilder();
+                String line = br.readLine();
+
+                while (line != null) {
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
+                    System.out.println(line = br.readLine());
+                }
+                String everything = sb.toString();
+                
+            } catch(IOException e){
+                 br.close();
             }
-            data[j] = next;
+            finally {
+               
+}
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TesterClass.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

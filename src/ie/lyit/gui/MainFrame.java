@@ -417,7 +417,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        footerPanel.setBackground(new java.awt.Color(0, 51, 0));
+        footerPanel.setBackground(new java.awt.Color(0, 204, 0));
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
@@ -1113,135 +1113,95 @@ public class MainFrame extends javax.swing.JFrame {
         insertCompareT2.setText(""+insert.getComparsions());
         insertSwapT2.setText(""+insert.getSwaps());
         insertButt.setEnabled(false);
-        setUnsortedColors();
-        setSortedColors();
-        setInverColors();
+        
+        //Set the colors of the panels
+        setColors(insertTimeT,bubTimeT,selectTimeT,enhanceTimeT);
+        setColors(insertTimeT1,bubTimeT1,selectTimeT1,enhanceTimeT1);
+        setColors(insertTimeT2,bubTimeT2,selectTimeT2,enhanceTimeT2);
               
     }//GEN-LAST:event_insertButtActionPerformed
-    public void setUnsortedColors(){
-        // Store vlaues from fields
-        long[] colors = new long[4];
-        colors[0] = Long.parseLong(insertTimeT.getText());
-        colors[1] = Long.parseLong(bubTimeT.getText());
-        colors[2] = Long.parseLong(selectTimeT.getText());
-        colors[3] = Long.parseLong(enhanceTimeT.getText());
-        JTextField[] x = new JTextField[4];
-        x[0] = insertTimeT;
-        x[1] = bubTimeT;
-        x[2] = selectTimeT;
-        x[3] = enhanceTimeT;
-
-        //Sort list
-        Arrays.sort(colors);
-        // Loop and compare values in the arrays,then change background
-        for(int i=0;i<colors.length;i++){
-            for(int j=0;j<colors.length-1;j++){
-            if(colors[i] == Long.parseLong(x[j].getText()) && i == 0){
-                x[j].getParent().setBackground(Color.green);
-                }
-            else if(colors[i] == Long.parseLong(x[j].getText()) && j == 0){
-                x[j].getParent().setBackground(Color.yellow);
-                }
-  
-            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 2){
-                x[j+1].getParent().setBackground(Color.orange);
-                }
-            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 1){
-                x[j+1].getParent().setBackground(Color.yellow);
-                }
-            if(colors[i] == Long.parseLong(x[j+1].getText()) && i == 3){
-                x[j+1].getParent().setBackground(Color.red);
-                }
-            }
-        } // End of for loop       
-    }
+    
     public void setSortedColors(){
+         // Store vlaues from fields
         long[] colors = new long[4];
-      // Store vlaues from fields
         colors[0] = Long.parseLong(insertTimeT1.getText());
         colors[1] = Long.parseLong(bubTimeT1.getText());
         colors[2] = Long.parseLong(selectTimeT1.getText());
         colors[3] = Long.parseLong(enhanceTimeT1.getText());
-        JTextField[] y = new JTextField[4];
-        y[0] = insertTimeT1;
-        y[1] = bubTimeT1;
-        y[2] = selectTimeT1;
-        y[3] = enhanceTimeT1;
+        JTextField[] x = new JTextField[4];
+        x[0] = bubTimeT1;
+        x[1] = enhanceTimeT1;
+        x[2] = selectTimeT1;
+        x[3] = insertTimeT1;
 
         //Sort list
         Arrays.sort(colors);
-        
-          for(long t:colors){
-            System.out.println(t);
-        }
        
+        System.out.println("\n");
         // Loop and compare values in the arrays,then change background
         for(int i=0;i<colors.length;i++){
-            for(int j=0;j<colors.length-1;j++){
-                
-            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 0){
-                y[j+1].getParent().setBackground(Color.green);
-                } 
-            if(colors[i] == Long.parseLong(y[j].getText()) && j == 0){
-                y[j].getParent().setBackground(Color.green);
-                } 
-            if(colors[i] == Long.parseLong(y[j].getText())&& j == 0){
-                y[j].getParent().setBackground(Color.orange);
-                }
-            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 1){
-                y[j+1].getParent().setBackground(Color.orange);
-                }
-            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 2){
-                y[j+1].getParent().setBackground(Color.yellow);
-                }
-            if(colors[i] == Long.parseLong(y[j+1].getText()) && i == 3){
-                y[j+1].getParent().setBackground(Color.red);
-                }
+            for(int j=0;j<colors.length;j++){
+                if(colors[i] == Long.parseLong(x[j].getText()) && i == 0){
+                    x[j].getParent().setBackground(Color.green);
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 1){
+                    x[j].getParent().setBackground(Color.yellow); 
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 2){
+                    x[j].getParent().setBackground(Color.orange);           
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(x[j].getText()) && i == 3){
+                    x[j].getParent().setBackground(Color.red);
+                    break;
+                 }     
             }
-        } // End of for loop    
+        } // End of for loop 
     }
-    public void setInverColors(){
-     // Store vlaues from fields
-        long[] colors2 = new long[4];
-        colors2[0] = Long.parseLong(insertTimeT2.getText());
-        colors2[1] = Long.parseLong(bubTimeT2.getText());
-        colors2[2] = Long.parseLong(selectTimeT2.getText());
-        colors2[3] = Long.parseLong(enhanceTimeT2.getText());
-        JTextField[] x = new JTextField[4];
-        x[0] = insertTimeT2;
-        x[1] = bubTimeT2;
-        x[2] = selectTimeT2;
-        x[3] = enhanceTimeT2;
-        
-        //Sort list
-        Arrays.sort(colors2);
-        
-       
-        // Loop and compare values in the arrays,then change background
-        for(int i=0;i<colors2.length;i++){
-            for(int j=0;j<colors2.length-1;j++){
-            if(colors2[i] == Long.parseLong(x[j].getText()) && i == 0){
-                x[j].getParent().setBackground(Color.green);
-                } 
-            else if(colors2[i] == Long.parseLong(x[j].getText()) && i == 3){
-                x[j].getParent().setBackground(Color.red);
-                } 
-             else if(colors2[i] == Long.parseLong(x[j].getText()) && j == 0){
-                x[j].getParent().setBackground(Color.orange);
-                } 
-            else if(colors2[i] == Long.parseLong(x[j+1].getText()) && i == 1){
-                x[j+1].getParent().setBackground(Color.yellow);
-                }
-            else if(colors2[i] == Long.parseLong(x[j+1].getText()) && i == 2){
-                x[j+1].getParent().setBackground(Color.orange);
-                } 
-            else if(colors2[i] == Long.parseLong(x[j+1].getText()) && i == 3){
-                x[j+1].getParent().setBackground(Color.red);
-                }
-            
-            }
-        } // End of for loop    
     
+    
+    public void setColors(JTextField t1,JTextField t2,JTextField t3,JTextField t4){
+        
+        // Store vlaues from fields
+        long[] colors = new long[4];
+        JTextField[] text = new JTextField[4];
+        
+        // Store values from fields into array
+        colors[0] = Long.parseLong(t1.getText());
+        colors[1] = Long.parseLong(t2.getText());
+        colors[2] = Long.parseLong(t3.getText());
+        colors[3] = Long.parseLong(t4.getText());
+        // Store into TextFields
+        text[0] = t1;
+        text[1] = t2;
+        text[2] = t3;
+        text[3] = t4;
+        //Sort list
+        Arrays.sort(colors);
+ 
+        // Loop and compare values in the arrays,then change background
+        for(int i=0;i<colors.length;i++){
+            for(int j=0;j<colors.length;j++){
+                if(colors[i] == Long.parseLong(text[j].getText()) && i == 0){
+                    text[j].getParent().setBackground(Color.green);
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(text[j].getText()) && i == 1){
+                    text[j].getParent().setBackground(Color.yellow); 
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(text[j].getText()) && i == 2){
+                    text[j].getParent().setBackground(Color.orange);           
+                    break;
+                 }
+                 if(colors[i] == Long.parseLong(text[j].getText()) && i == 3){
+                    text[j].getParent().setBackground(Color.red);
+                    break;
+                 }     
+            }
+        } // End of for loop 
     }
     public static void main(String args[]) {
         
