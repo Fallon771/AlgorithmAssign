@@ -6,4 +6,4 @@ GUI designed to displays different colors depending on time taken to complete.
 
 User can select what array size and algorithm to compare with.
 
-Displays time taken(nano),number of swap operations & number of comparsions.
+Displays time taken(nano),number of swap operations & number of comparsions..
