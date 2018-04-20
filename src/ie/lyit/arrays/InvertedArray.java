@@ -12,6 +12,7 @@ public class InvertedArray {
 
         //Collections reverseOrder() only works for type Integer,so lets try this..
         for(int i=0;i<data.length;i++){
+            // Number range 1-10000
             data[i] = rand.nextInt(10000)+1;
             // Make numbers all negitive
             data[i] = data[i] * - 1;
@@ -25,7 +26,7 @@ public class InvertedArray {
         // Clone array..(create separate copy in memory)
         array = data.clone();
         } 
-
+    // Return array
     public int[] getArray() {
         return array;
     } 

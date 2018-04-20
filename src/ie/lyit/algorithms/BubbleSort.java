@@ -9,6 +9,7 @@ public class BubbleSort {
     private long finishTime;
     private long swaps;
     private int comparsions;
+    private int iLoop;
     
     // Bubble sort
     public void bubbleSort(int array[]){
@@ -17,6 +18,7 @@ public class BubbleSort {
     startTime = System.nanoTime();
     
     for(int i=0;i<array.length;i++){
+        iLoop += i;
 	for(int j=0;j<array.length-1;j++){
         comparsions ++;
             //Compare values
@@ -41,4 +43,7 @@ public class BubbleSort {
     public int getComparsions() {
         return comparsions;
     }  
+    public int getI(){
+        return iLoop;
+    }
 }

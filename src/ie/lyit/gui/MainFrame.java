@@ -420,8 +420,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         footerPanel.setBackground(new java.awt.Color(0, 204, 0));
 
+        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 9)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Author J.Fallon L00131059");
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
@@ -434,8 +435,8 @@ public class MainFrame extends javax.swing.JFrame {
         );
         footerPanelLayout.setVerticalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+            .addGroup(footerPanelLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
 
@@ -877,7 +878,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(sortedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(invertedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1083,7 +1084,7 @@ public class MainFrame extends javax.swing.JFrame {
         // Disable buttons
         selectButt.setEnabled(false);
         insertButt.setEnabled(true);
-            
+                
     }//GEN-LAST:event_selectButtActionPerformed
 
     private void enhancedButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enhancedButtActionPerformed
@@ -1197,7 +1198,12 @@ public class MainFrame extends javax.swing.JFrame {
        insertButt.setEnabled(false);
       
     }//GEN-LAST:event_resetButtActionPerformed
-    
+    /* This method sets the final colors for each of the JPanels
+     * Green- Fastest
+     * Yellow- Fast
+     * Orange- Slow
+     * Red - Slowest
+     */
     public void setColors(JTextField t1,JTextField t2,JTextField t3,JTextField t4){
         
         // Store vlaues from fields
@@ -1216,10 +1222,10 @@ public class MainFrame extends javax.swing.JFrame {
         text[3] = t4;
         //Sort list
         Arrays.sort(colors);
- 
         // Loop and compare values in the arrays,then change background
         for(int i=0;i<colors.length;i++){
             for(int j=0;j<colors.length;j++){
+                // Get parent and set colour 
                 if(colors[i] == Long.parseLong(text[j].getText()) && i == 0){
                     text[j].getParent().setBackground(Color.green);
                     break;

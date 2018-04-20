@@ -18,11 +18,12 @@ public class EnhancedBubble {
         comparsions = 0;
         swaps = 0;
 	startTime = System.nanoTime();
-        
+        // Loop until we reach end of array or its sorted
 	for(int i =0;i < data.length && !arraySorted;i++){	
 	arraySorted = true;
             for(int j=0;j<data.length-i-1;j++){
                 comparsions++;
+                // Swap intergers 
 		if(data[j] > data[j+1]){			
 		int temp = data[j+1];
 		data[j+1] = data[j];
@@ -36,7 +37,7 @@ public class EnhancedBubble {
         array = data.clone();		
 	} 
     
-    // Getter's
+    // Getter's to return our results
     public long getSwaps() {
         return swaps;
     }
